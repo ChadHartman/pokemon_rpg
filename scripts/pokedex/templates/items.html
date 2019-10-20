@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link href="assets/css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <h1>Items</h1>
+    <h2> <a name="toc">Table of Contents</a></h2>
+    <div class="toc_container">
+        {{#items}}
+        <span class="toc_item"><a href="#{{name}}">{{name}}</a></span>
+        {{/items}}
+    </div>
+    {{#items}}
+    <hr />
+    <h2><a name="{{name}}">{{name}}</a></h2>
+    <p>{{description}}</p>
+    <table>
+        <tbody>
+            <tr>
+                <td><span>Cost</span></td>
+                <td><span>{{cost}}</span></td>
+            </tr>
+            <tr>
+                <td><span>Category</span></td>
+                <td><span>{{category}}</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Effect</h3>
+    <p>{{effect}}</p>
+    <p><a href="#toc">top</a></p>
+    {{/items}}
+</body>
+
+</html>

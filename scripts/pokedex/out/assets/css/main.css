@@ -1,0 +1,32 @@
+html {
+    font-family: sans-serif;
+}
+
+h2,
+h3,
+h4,
+span {
+    text-transform: capitalize;
+}
+
+td:nth-child(even) {
+    text-align: right;
+}
+
+td,
+th {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.toc_container {
+    overflow:auto;
+}
+
+.toc_item {
+    float: left;
+    background-color: #ddd;
+    padding: 5px;
+    margin: 5px;
+    width: 128px;
+}
