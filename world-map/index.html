@@ -15,6 +15,11 @@
             margin: 0;
         }
 
+        ul {
+            padding-left: 20px;
+            margin: 5px 0px 0px 0px;
+        }
+
         .town {
             position: absolute;
             margin-left: -3px;
@@ -25,10 +30,10 @@
         }
 
         .detail {
+            font-size: 8pt;
             margin-top: -10px;
             margin-left: 10px;
-            width: 200px;
-            height: 200px;
+            min-width: 100px;
             background-color: white;
             border-radius: 7px;
             border: 1px solid black;
@@ -42,7 +47,7 @@
         }
 
         .town:hover .detail {
-            display: block;
+            display: inline-block;
         }
     </style>
 </head>
@@ -203,7 +208,7 @@
             <h4>Camp Alabaster</h4>
             <ul>
                 <li>
-                    Only accessable by chartered boat
+                    Requires <i class="fas fa-ship"></i>
                 </li>
                 <li>
                     Ice Gym
@@ -217,6 +222,9 @@
             <h4>Bole Forest</h4>
             <ul>
                 <li>
+                    Requires <i class="fas fa-hiking"></i>
+                </li>
+                <li>
                     Bug Gym
                 </li>
             </ul>
@@ -227,6 +235,12 @@
         <div class="detail">
             <h4>Jonquil Ruins</h4>
             <ul>
+                <li>
+                    Requires <i class="fas fa-ship"></i>
+                </li>
+                <li>
+                    Requires <i class="fas fa-hiking"></i>
+                </li>
                 <li>
                     Fire Gym
                 </li>
@@ -239,21 +253,24 @@
             <h4>Amaranth Fields</h4>
             <ul>
                 <li>
+                    Requires <i class="fas fa-ship"></i>
+                </li>
+                <li>
                     Grass Gym
                 </li>
             </ul>
         </div>
     </div>
     <div class="town" style="left:894px;top:473px">
-            <i class="fas fa-skull-crossbones"></i>
-            <div class="detail">
-                <h4>Claret Crossroads</h4>
-                <ul>
-                    <li>
-                        Ghost Gym
-                    </li>
-                </ul>
-            </div>
+        <i class="fas fa-skull-crossbones"></i>
+        <div class="detail">
+            <h4>Claret Crossroads</h4>
+            <ul>
+                <li>
+                    Ghost Gym
+                </li>
+            </ul>
+        </div>
     </div>
     <script src="assets/js/jquery-3.4.1.slim.min.js"></script>
     <script>
