@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link href="assets/css/main.css" rel="stylesheet" type="text/css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <h1>Pokedex</h1>
+    <ul>
+        <li><span> <a href="pokedex1.html">Pokedex 1-151</a></span></li>
+        <li><span> <a href="pokedex2.html">Pokedex 152-251</a></span></li>
+        <li><span> <a href="pokedex3.html">Pokedex 252-386</a></span></li>
+    </ul>
+
+
+    <h2> <a name="toc">Table of Contents</a></h2>
+    <div class="toc_container">
+        {{#pokemon}}
+        <span class="toc_item"><a href="#{{name}}">{{id}}: {{name}}</a></span>
+        {{/pokemon}}
+    </div>
+    {{#pokemon}}
+    <hr />
+    <h2><a name="{{name}}">{{id}}. {{name}}</a></h2>
+    <p>{{description}}</p>
+    <table>
+        <thead>
+            <th colspan="2"><span>Info</span></th>
+            <th colspan="2"><span>Stats</span></th>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span>Gender</span></td>
+                <td><span>{{{gender_rate}}}</span></td>
+                <td><span>HP</span></td>
+                <td><span>{{hp}}</span></td>
+            </tr>
+            <tr>
+                <td><span>Capture</span></td>
+                <td><span>{{capture_rate}}-20</span></td>
+                <td><span>Attack</span></td>
+                <td><span>{{atk}}</span></td>
+            </tr>
+            <tr>
+                <td><span>Habitat</span></td>
+                <td><span>{{habitat}}</span></td>
+                <td><span>Defense</span></td>
+                <td><span>{{def}}</span></td>
+            </tr>
+            <tr>
+                <td><span></span></td>
+                <td><span></span></td>
+                <td><span>Special Attack</span></td>
+                <td><span>{{sp_atk}}</span></td>
+            </tr>
+            <tr>
+                <td><span></span></td>
+                <td><span></span></td>
+                <td><span>Special Defense</span></td>
+                <td><span>{{sp_def}}</span></td>
+            </tr>
+            <tr>
+                <td><span></span></td>
+                <td><span></span></td>
+                <td><span>Speed</span></td>
+                <td><span>{{spd}}</span></td>
+            </tr>
+        </tbody>
+    </table>
+    <h3>Abilites</h3>
+    <h4>{{ability1_name}}</h4>
+    <p>{{ability1_text}}</p>
+    {{#ability2_name}}
+    <h4>{{ability2_name}}</h4>
+    <p>{{ability2_text}}</p>
+    {{/ability2_name}}
+    <h3>Moves</h3>
+    <table>
+        <thead>
+            <tr>
+                <th><span>Method</span></th>
+                <th><span>Move</span></th>
+                <th><span>Level</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#moves}}
+            <tr>
+                <td><span>{{method}}</span></td>
+                <td><a href="moves.html#{{move}}" target="_blank"><span>{{move}}</span></a></td>
+                <td><span>{{level}}</span></td>
+            </tr>
+            {{/moves}}
+        </tbody>
+    </table>
+    <p><a href="#toc">top</a></p>
+    {{/pokemon}}
+</body>
+
+</html>

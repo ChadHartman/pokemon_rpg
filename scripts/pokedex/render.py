@@ -2,7 +2,7 @@ import sqlite3
 import pystache
 from math import ceil
 
-DB_LOCATION = "/Users/chadhartman/Documents/external/games/pokemon/pokedex/pokedex/data/pokedex.sqlite"
+DB_LOCATION = "/Users/chadhartman/Documents/external/games/pokemon/veekun-pokedex.sqlite"
 GENDER = {
     -1: "None",
     0: "100% &#9794; 0% &#9792; ",
@@ -13,6 +13,7 @@ GENDER = {
     7: "12.5% &#9794; (1-3), 87.5% &#9792; (4-20)",
     8: "0% &#9794;, 100% &#9792;"
 }
+
 
 def __d20_chance__(value, max_value):
     return 20 - int(round((19 * value / max_value)))
@@ -61,6 +62,11 @@ def __query__(conn, query_path, args=None):
             record[keys[i]] = value
 
     return records
+
+
+def __load_pokedex__(conn):
+    pokedex = __query__(conn, "sql/pokedex.sql")
+    return {"pokedex": pokedex}
 
 
 def __load_pokemon__(conn, start_id, end_id):
@@ -146,29 +152,35 @@ def main():
     conn = sqlite3.connect(DB_LOCATION)
     conn.row_factory = sqlite3.Row
 
+    __render__(
+        __load_pokedex__(conn),
+        "templates/pokedex.html",
+        "out/pokedex.html"
+    )
+
     # __render__(
     #     __load_moves__(conn),
     #     "templates/moves.html",
     #     "out/moves.html"
     # )
 
-    __render__(
-        __load_pokemon__(conn, 1, 151),
-        "templates/pokedex.html",
-        "out/pokedex1.html"
-    )
+    # __render__(
+    #     __load_pokemon__(conn, 1, 151),
+    #     "templates/pokedex.html",
+    #     "out/pokedex1.html"
+    # )
 
-    __render__(
-        __load_pokemon__(conn, 152, 251),
-        "templates/pokedex.html",
-        "out/pokedex2.html"
-    )
+    # __render__(
+    #     __load_pokemon__(conn, 152, 251),
+    #     "templates/pokedex.html",
+    #     "out/pokedex2.html"
+    # )
 
-    __render__(
-        __load_pokemon__(conn, 252, 386),
-        "templates/pokedex.html",
-        "out/pokedex3.html"
-    )
+    # __render__(
+    #     __load_pokemon__(conn, 252, 386),
+    #     "templates/pokedex.html",
+    #     "out/pokedex3.html"
+    # )
 
     # __render__(
     #     __load_habitat__(conn),
@@ -182,8 +194,8 @@ def main():
     #     "out/items.html"
     # )
 
-    import json
-    print json.dumps(__load_evolutions__(conn), indent=4)
+    # import json
+    # print json.dumps(__load_evolutions__(conn), indent=4)
 
 
 if __name__ == "__main__":
