@@ -17,14 +17,82 @@
         <thead>
             <tr>
                 <th>
+                    <span>ID</span>
+                    <br />
                     <button data-tablesort="desc">&#8595;</button>
                     <button data-tablesort="asc">&#8593;</button>
-                    <span>ID</span>
                 </th>
                 <th>
+                    <span>Name</span>
+                    <br />
                     <button data-tablesort="desc">&#8595;</button>
                     <button data-tablesort="asc">&#8593;</button>
-                    <span>Name</span>
+                </th>
+                <th>
+                    <span>Type 1</span>
+                    <br />
+                    <button data-tablesort="desc">&#8595;</button>
+                    <button data-tablesort="asc">&#8593;</button>
+                </th>
+                <th>
+                    <span>Type 2</span>
+                    <br />
+                    <button data-tablesort="desc">&#8595;</button>
+                    <button data-tablesort="asc">&#8593;</button>
+                </th>
+                <th>
+                    <span>Gender Rate</span>
+                    <br />
+                    <button data-tablesort="desc">&#8595;</button>
+                    <button data-tablesort="asc">&#8593;</button>
+                </th>
+                <th>
+                    <span>Capture Rate</span>
+                    <br />
+                    <button data-tablesort="desc">&#8595;</button>
+                    <button data-tablesort="asc">&#8593;</button>
+                </th>
+                <th>
+                    <span>Habitat</span>
+                    <br />
+                    <button data-tablesort="desc">&#8595;</button>
+                    <button data-tablesort="asc">&#8593;</button>
+                </th>
+                <th>
+                    <span>HP</span>
+                    <br />
+                    <button data-tablesort="desc">&#8595;</button>
+                    <button data-tablesort="asc">&#8593;</button>
+                </th>
+                <th>
+                    <span>ATK</span>
+                    <br />
+                    <button data-tablesort="desc">&#8595;</button>
+                    <button data-tablesort="asc">&#8593;</button>
+                </th>
+                <th>
+                    <span>DEF</span>
+                    <br />
+                    <button data-tablesort="desc">&#8595;</button>
+                    <button data-tablesort="asc">&#8593;</button>
+                </th>
+                <th>
+                    <span>SP ATK</span>
+                    <br />
+                    <button data-tablesort="desc">&#8595;</button>
+                    <button data-tablesort="asc">&#8593;</button>
+                </th>
+                <th>
+                    <span>SP DEF</span>
+                    <br />
+                    <button data-tablesort="desc">&#8595;</button>
+                    <button data-tablesort="asc">&#8593;</button>
+                </th>
+                <th>
+                    <span>SPD</span>
+                    <br />
+                    <button data-tablesort="desc">&#8595;</button>
+                    <button data-tablesort="asc">&#8593;</button>
                 </th>
             </tr>
         </thead>
@@ -33,6 +101,17 @@
             <tr data-index="{{row_index}}" data-filter="item" data-tablesort="row">
                 <td>{{id}}</td>
                 <td><a href="pokemon-{{id}}.html" target="_blank">{{name}}</a></td>
+                <td>{{type1}}</td>
+                <td>{{type2}}</td>
+                <td>{{gender_rate}}</td>
+                <td>{{capture_rate}}</td>
+                <td>{{habitat}}</td>
+                <td>{{hp}}</td>
+                <td>{{atk}}</td>
+                <td>{{def}}</td>
+                <td>{{sp_atk}}</td>
+                <td>{{sp_def}}</td>
+                <td>{{spd}}</td>
             </tr>
             {{/pokedex}}
         </tbody>
