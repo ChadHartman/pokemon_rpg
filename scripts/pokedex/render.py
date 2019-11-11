@@ -1,6 +1,5 @@
 import sqlite3
 import pystache
-from math import ceil
 
 DB_LOCATION = "/Users/chadhartman/Documents/external/games/pokemon/veekun-pokedex.sqlite"
 GENDER = {
@@ -69,31 +68,26 @@ def __load_pokedex__(conn):
     return {"pokedex": pokedex}
 
 
-def __load_pokemon__(conn, start_id, end_id):
+def __load_pokemon__(conn, pokemon_data):
 
-    pokedex = __query__(conn, "sql/pokemon.sql", (start_id, end_id))
-    for mon in pokedex:
-        mon["gender_rate"] = GENDER[mon["gender_rate"]]
-        # Ensures hp will be between 5-100
-        mon["hp"] = int(ceil(((19.0 / 49.0) * mon["hp"]) + (55.0 / 49.0)))
-        mon["atk"] = int(ceil(mon["atk"] / 10.0))
-        mon["def"] = int(ceil(mon["def"] / 10.0))
-        mon["sp_atk"] = int(ceil(mon["sp_atk"] / 10.0))
-        mon["sp_def"] = int(ceil(mon["sp_def"] / 10.0))
-        mon["spd"] = int(ceil(mon["spd"] / 10.0))
-        mon["capture_rate"] = __d20_chance__(mon["capture_rate"],  255.0)
-        mon["moves"] = __query__(conn, "sql/pokemon_moves.sql", (mon["id"],))
+    pokemon_data["moves"] = __query__(
+        conn,
+        "sql/pokemon_moves.sql",
+        (pokemon_data["id"],))
 
-    return {"pokemon": pokedex}
+    return pokemon_data
 
 
 def __render__(template_data, template_path, out_path):
+
+    outfile = pystache.render(out_path, template_data)
+
     template = __load_file__(template_path)
 
-    with open(out_path, "w") as f:
+    with open(outfile, "w") as f:
         f.write(pystache.render(template, template_data))
 
-    print "Created", out_path
+    print "Created", outfile
 
 
 def __load_habitat__(conn):
@@ -152,34 +146,30 @@ def main():
     conn = sqlite3.connect(DB_LOCATION)
     conn.row_factory = sqlite3.Row
 
-    __render__(
-        __load_pokedex__(conn),
-        "templates/pokedex.html",
-        "out/pokedex.html"
-    )
+    pokedex_data = __load_pokedex__(conn)
+
+    # __render__(
+    #     pokedex_data,
+    #     "templates/pokedex.html",
+    #     "out/pokedex.html"
+    # )
+
+    count = 0
+
+    for pokemon in pokedex_data["pokedex"]:
+        __render__(
+            __load_pokemon__(conn, pokemon),
+            "templates/pokemon-{{id}}.html",
+            "out/pokemon-{{id}}.html"
+        )
+        count += 1
+        if count >= 3:
+            break
 
     # __render__(
     #     __load_moves__(conn),
     #     "templates/moves.html",
     #     "out/moves.html"
-    # )
-
-    # __render__(
-    #     __load_pokemon__(conn, 1, 151),
-    #     "templates/pokedex.html",
-    #     "out/pokedex1.html"
-    # )
-
-    # __render__(
-    #     __load_pokemon__(conn, 152, 251),
-    #     "templates/pokedex.html",
-    #     "out/pokedex2.html"
-    # )
-
-    # __render__(
-    #     __load_pokemon__(conn, 252, 386),
-    #     "templates/pokedex.html",
-    #     "out/pokedex3.html"
     # )
 
     # __render__(

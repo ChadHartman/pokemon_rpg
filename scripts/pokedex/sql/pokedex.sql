@@ -6,12 +6,16 @@ SELECT
     pokemon_species.gender_rate,
     pokemon_species.capture_rate,
     pokemon_habitats.identifier AS habitat,
-    hp_stats.base_stat AS hp,
-    atk_stats.base_stat AS atk,
-    def_stats.base_stat AS def,
-    sp_atk_stats.base_stat AS sp_atk,
-    sp_def_stats.base_stat AS sp_def,
-    spd_stats.base_stat AS spd
+    CAST(ROUND((155 + (99 * hp_stats.base_stat)) / 254) AS INT) AS hp,
+    CAST(ROUND(atk_stats.base_stat / 10) AS INT) AS atk,
+    CAST(ROUND(def_stats.base_stat / 10) AS INT) AS def,
+    CAST(ROUND(sp_atk_stats.base_stat / 10) AS INT) AS sp_atk,
+    CAST(ROUND(sp_def_stats.base_stat / 10) AS INT) AS sp_def,
+    CAST(ROUND(spd_stats.base_stat / 10) AS INT) AS spd,
+    previous_pkmn.id AS prev_id,
+    previous_pkmn.identifier AS prev_name,
+    next_pkmn.id AS next_id,
+    next_pkmn.identifier AS next_name
 FROM pokemon_species 
     INNER JOIN pokemon_habitats
         ON pokemon_species.habitat_id = pokemon_habitats.id
@@ -43,4 +47,8 @@ FROM pokemon_species
         AND pkmn_type2.slot = 2
     LEFT JOIN types AS type2
         ON pkmn_type2.type_id = type2.id
+    LEFT JOIN pokemon AS previous_pkmn
+        ON (pokemon_species.id - 1) = previous_pkmn.id
+    LEFT JOIN pokemon AS next_pkmn
+        ON (pokemon_species.id + 1) = next_pkmn.id
 WHERE pokemon_species.generation_id <= 3

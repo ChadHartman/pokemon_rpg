@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link href="assets/css/main.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/fontawesome.min.css" rel="stylesheet">
+    <link href="assets/css/solid.min.css" rel="stylesheet">
+    <title class="capitalize">{{name}}</title>
+</head>
+
+<body>
+    <h1 class="capitalize">{{id}}: {{name}}</h1>
+    <div class="pokedex-navigation">
+        {{#prev_id}}
+        <span class="capitalize">
+            <a href="pokemon-{{prev_id}}.html">{{prev_id}}: {{prev_name}}</a>
+        </span>
+        {{/prev_id}}
+        <span class="capitalize">
+            {{id}}: {{name}}
+        </span>
+        {{#next_id}}
+        <span class="capitalize">
+            <a href="pokemon-{{next_id}}.html">{{next_id}}: {{next_name}}</a>
+        </span>
+        {{/next_id}}
+    </div>
+    <div class="stats">
+        <table>
+            <tbody>
+                <tr>
+                    <th>Type</th>
+                    <td>
+                        <span class="element {{type1}}">{{type1}}</span>
+                        <span class="element {{type2}}">{{type2}}</span></td>
+                    <th>HP</th>
+                    <td>{{hp}}</td>
+                </tr>
+                <tr>
+                    <th>Habitat</th>
+                    <td class="capitalize">{{habitat}}</td>
+
+                    <th>Atk</th>
+                    <td>{{atk}}</td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td>{{gender_rate}}</td>
+
+                    <th>Def</th>
+                    <td> {{def}}</td>
+                </tr>
+                <tr>
+                    <th>Capture Rate</th>
+                    <td>{{capture_rate}}</td>
+                    <th>Sp. Atk</th>
+                    <td> {{sp_atk}}</td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td></td>
+                    <th>Sp. Def</th>
+                    <td> {{sp_def}}</td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td></td>
+                    <th>Spd</th>
+                    <td> {{spd}} </td>
+                </tr>
+            </tbody>
+        </table>
+        <canvas class="stathex" width="200" height="200"></canvas>
+    </div>
+    <h2>Moves</h2>
+    <hr />
+    <label for="pokemon-filter"><i class="fas fa-filter"></i></label>
+    <input id="pokemon-filter" data-filter="input" type="text" />
+    <hr />
+    <table>
+        <thead>
+            <tr>
+                <th>method</th>
+                <th>level</th>
+                <th>move</th>
+                <th>element</th>
+                <th>power</th>
+                <th>accuracy</th>
+                <th>pp</th>
+                <th>dmg_type</th>
+                <th>target</th>
+                <th>priority</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#moves}}
+            <tr data-filter="item">
+                <td>{{method}}</td>
+                <td>{{level}}</td>
+                <td>{{move}}</td>
+                <td class="element {{element}}">{{element}}</td>
+                <td class="{{^power}}empty{{/power}}">{{power}}</td>
+                <td class="{{^accuracy}}empty{{/accuracy}}">{{accuracy}}</td>
+                <td>{{pp}}</td>
+                <td>{{dmg_type}}</td>
+                <td>{{target}}</td>
+                <td>{{priority}}</td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="8">
+                    {{description}}
+                </td>
+            </tr>
+            {{/moves}}
+        </tbody>
+    </table>
+
+    <script src="assets/js/jquery-3.4.1.slim.min.js"></script>
+    <script src="assets/js/filter.js"></script>
+    <script src="assets/js/tablesort.js"></script>
+    <script src="assets/js/stathex.js"></script>
+    <script>
+        $("document").ready(() => {
+            app.filter.setup();
+            app.tablesort.setup()
+            // parseInt used so the formatting validation is not thrown off by mustache
+            app.stathex.setup([{
+                "label": "HP",
+                "value": parseInt("{{hp}}"),
+                "max": 100
+            }, {
+                "label": "S. ATK",
+                "value": parseInt("{{sp_atk}}"),
+                "max": 15
+            }, {
+                "label": "S. DEF",
+                "value": parseInt("{{sp_def}}"),
+                "max": 23
+            }, {
+                "label": "SPD",
+                "value": parseInt("{{spd}}"),
+                "max": 16
+            }, {
+                "label": "DEF",
+                "value": parseInt("{{def}}"),
+                "max": 23
+            }, {
+                "label": "ATK",
+                "value": parseInt("{{atk}}"),
+                "max": 16
+            }]);
+        });
+    </script>
+
+</html>
