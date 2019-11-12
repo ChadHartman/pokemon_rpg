@@ -15,12 +15,12 @@ div.stat-info>* {
     float: left;
 }
 
-div.stats table {
+table.info-table {
     border: 1px solid black;
     text-align: right;
 }
 
-div.stats table tr:nth-child(even)>* {
+table.info-table tr:nth-child(even)>* {
     background-color: #ddd;
 }
 

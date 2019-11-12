@@ -29,7 +29,7 @@
     <div class="stats">
         <h2>Stats</h2>
         <div class="stat-info">
-            <table>
+            <table class="info-table">
                 <tbody>
                     <tr>
                         <th>Type:</th>
@@ -80,6 +80,90 @@
         </div>
         <p>{{description}}</p>
     </div>
+    <div class="abilities">
+        <h2>Abilities</h2>
+        <table class="info-table">
+            <tbody>
+                <tr>
+                    <th class="capitalize">{{ability1_name}}</th>
+                    <td>{{ability1_description}}</td>
+                </tr>
+                {{#ability2_name}}
+                <tr>
+                    <th class="capitalize">{{ability2_name}}</th>
+                    <td>{{ability2_description}}</td>
+                </tr>
+                {{/ability2_name}}
+            </tbody>
+        </table>
+    </div>
+    {{#ev_trigger}}
+    <div class="evolution">
+        <h2>Evolution</h2>
+        <table class="info-table">
+            <tbody>
+                <tr>
+                    <th>Trigger</th>
+                    <td>{{ev_trigger}}</td>
+                </tr>
+                {{#ev_min_lvl}}
+                <tr>
+                    <th>Min Level</th>
+                    <td>{{ev_min_lvl}}</td>
+                </tr>
+                {{/ev_min_lvl}}
+                {{#ev_trigger_item}}
+                <tr>
+                    <th>Trigger Item</th>
+                    <td>{{ev_trigger_item}}</td>
+                </tr>
+                {{/ev_trigger_item}}
+                {{#ev_held_item}}
+                <tr>
+                    <th>Held Item</th>
+                    <td>{{ev_held_item}}</td>
+                </tr>
+                {{/ev_held_item}}
+                {{#ev_time_of_day}}
+                <tr>
+                    <th>Time of Day</th>
+                    <td>{{ev_time_of_day}}</td>
+                </tr>
+                {{/ev_time_of_day}}
+                {{#ev_min_happy}}
+                <tr>
+                    <th>Min Happiness</th>
+                    <td>{{ev_min_happy}}</td>
+                </tr>
+                {{/ev_min_happy}}
+                {{#ev_min_beauty}}
+                <tr>
+                    <th>Min Beauty</th>
+                    <td>{{ev_min_beauty}}</td>
+                </tr>
+                {{/ev_min_beauty}}
+                {{#ev_rel_phys_stats}}
+                <tr>
+                    <th>Relative Physical Stats</th>
+                    <td>{{ev_rel_phys_stats}}</td>
+                </tr>
+                {{/ev_rel_phys_stats}}
+                {{#ev_known_move}}
+                <tr>
+                    <th>Known Move</th>
+                    <td>{{ev_known_move}}</td>
+                </tr>
+                {{/ev_known_move}}
+                {{#ev_party_species_id}}
+                <tr>
+                    <th>Party Species</th>
+                    <td>{{ev_party_species_id}}-{{ev_party_species_name}}</td>
+                </tr>
+                {{/ev_party_species_id}}
+            </tbody>
+        </table>
+    </div>
+    {{/ev_trigger}}
     <div class="moves">
         <h2>Moves</h2>
         <table>
@@ -129,7 +213,6 @@
             </tbody>
         </table>
     </div>
-
     <script src="assets/js/jquery-3.4.1.slim.min.js"></script>
     <script src="assets/js/stathex.js"></script>
     <script>
