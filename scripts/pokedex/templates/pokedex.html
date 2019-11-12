@@ -15,84 +15,31 @@
     <label for="pokedex-filter"><i class="fas fa-filter"></i></label>
     <input id="pokedex-filter" data-filter="input" type="text" />
     <hr />
-    <table data-tablesort="table">
+    <table id="pokedex" data-tablesort="table">
         <thead>
             <tr>
                 <th>
                     <span>ID</span>
-                    <br />
                     <button data-tablesort="desc">&#8595;</button>
                     <button data-tablesort="asc">&#8593;</button>
                 </th>
                 <th>
                     <span>Name</span>
-                    <br />
                     <button data-tablesort="desc">&#8595;</button>
                     <button data-tablesort="asc">&#8593;</button>
                 </th>
                 <th>
-                    <span>Type 1</span>
-                    <br />
-                    <button data-tablesort="desc">&#8595;</button>
-                    <button data-tablesort="asc">&#8593;</button>
-                </th>
-                <th>
-                    <span>Type 2</span>
-                    <br />
-                    <button data-tablesort="desc">&#8595;</button>
-                    <button data-tablesort="asc">&#8593;</button>
-                </th>
-                <th>
-                    <span>Gender Rate</span>
-                    <br />
-                    <button data-tablesort="desc">&#8595;</button>
-                    <button data-tablesort="asc">&#8593;</button>
-                </th>
-                <th>
-                    <span>Capture Rate</span>
-                    <br />
+                    <span>Type(s)</span>
                     <button data-tablesort="desc">&#8595;</button>
                     <button data-tablesort="asc">&#8593;</button>
                 </th>
                 <th>
                     <span>Habitat</span>
-                    <br />
                     <button data-tablesort="desc">&#8595;</button>
                     <button data-tablesort="asc">&#8593;</button>
                 </th>
                 <th>
-                    <span>HP</span>
-                    <br />
-                    <button data-tablesort="desc">&#8595;</button>
-                    <button data-tablesort="asc">&#8593;</button>
-                </th>
-                <th>
-                    <span>ATK</span>
-                    <br />
-                    <button data-tablesort="desc">&#8595;</button>
-                    <button data-tablesort="asc">&#8593;</button>
-                </th>
-                <th>
-                    <span>DEF</span>
-                    <br />
-                    <button data-tablesort="desc">&#8595;</button>
-                    <button data-tablesort="asc">&#8593;</button>
-                </th>
-                <th>
-                    <span>SP ATK</span>
-                    <br />
-                    <button data-tablesort="desc">&#8595;</button>
-                    <button data-tablesort="asc">&#8593;</button>
-                </th>
-                <th>
-                    <span>SP DEF</span>
-                    <br />
-                    <button data-tablesort="desc">&#8595;</button>
-                    <button data-tablesort="asc">&#8593;</button>
-                </th>
-                <th>
-                    <span>SPD</span>
-                    <br />
+                    <span>PWR</span>
                     <button data-tablesort="desc">&#8595;</button>
                     <button data-tablesort="asc">&#8593;</button>
                 </th>
@@ -102,18 +49,16 @@
             {{#pokedex}}
             <tr data-index="{{row_index}}" data-filter="item" data-tablesort="row">
                 <td>{{id}}</td>
-                <td><a href="pokemon-{{id}}.html" target="_blank">{{name}}</a></td>
-                <td>{{type1}}</td>
-                <td>{{type2}}</td>
-                <td>{{gender_rate}}</td>
-                <td>{{capture_rate}}</td>
+                <td class="capitalize"><a href="pokemon-{{id}}.html" target="_blank">{{name}}</a></td>
+                <td><span class="element {{type1}}">{{type1}}</span>
+                    {{#type2}}
+                    <span class="element {{type2}}">{{type2}}</span>
+                    {{/type2}}</td>
                 <td>{{habitat}}</td>
-                <td>{{hp}}</td>
-                <td>{{atk}}</td>
-                <td>{{def}}</td>
-                <td>{{sp_atk}}</td>
-                <td>{{sp_def}}</td>
-                <td>{{spd}}</td>
+                <td data-tablesort-key="{{pwr}}">
+                    <progress max="113" value="{{pwr}}">{{pwr}}</progress>
+                    {{pwr}} / 113
+                </td>
             </tr>
             {{/pokedex}}
         </tbody>

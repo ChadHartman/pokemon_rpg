@@ -1,9 +1,6 @@
 html {
     font-family: sans-serif;
-}
-
-.capitalize {
-    text-transform: capitalize;
+    font-size: 12pt;
 }
 
 table {
@@ -23,43 +20,66 @@ div.stats table {
     text-align: right;
 }
 
+div.stats table tr:nth-child(even)>* {
+    background-color: #ddd;
+}
+
 table.move {
     font-size: 8pt;
     text-align: center;
 }
 
-.empty {
-    background-color: grey;
-}
-
 td, th {
-    /* border: 1px solid black; */
     padding: 5px;
 }
 
-tr:nth-child(even) {
+div.moves tr:nth-child(4n)>*, div.moves tr:nth-child(4n-1)>* {
     background-color: #ddd;
 }
 
-.toc_container {
-    overflow: auto;
+div.pokedex-navigation {
+    margin-bottom: 10px;
 }
 
-.toc_item {
-    float: left;
+div.pokedex-navigation span {
+    margin-right: 20px;
+}
+
+table#pokedex tr:nth-child(even)>* {
     background-color: #ddd;
-    padding: 5px;
-    margin: 5px;
-    width: 128px;
+}
+
+table#pokedex button {
+    border: 0px;
+    background: none;
+    padding: 0px 2px 0px 2px;
+}
+
+/* tags */
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.empty {
+    background-color: #ccc;
 }
 
 .element {
     color: white;
     font-weight: bold;
+    display: inline-block;
+    width: 40px;
+    padding: 5px;
+    font-size: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    text-align: center;
 }
 
 .description {
     text-align: left;
+    font-size: 10pt;
 }
 
 .normal {
@@ -134,19 +154,29 @@ tr:nth-child(even) {
     background-color: #EE99AC;
 }
 
-div.pokedex-navigation {
-    margin-bottom: 10px;
-}
-
-div.pokedex-navigation span {
-    margin-right: 20px;
-}
-
-span.element {
+.dmg-type {
+    display: inline-block;
+    width: 50px;
     padding: 5px;
-    font-size: 10px;
+    font-size: 12px;
     border-radius: 5px;
-    border: 1px solid black;
+    text-align: center;
 }
 
-canvas.stathex {}
+.physical {
+    background: #C92112;
+    border: 2px solid #d96358;
+    color: #F67A1A;
+}
+
+.special {
+    background: #4F5870;
+    border: 1px solid #333948;
+    color: white;
+}
+
+.status {
+    background: #8C888C;
+    border: 1px solid #5b585b;
+    color: white;
+}

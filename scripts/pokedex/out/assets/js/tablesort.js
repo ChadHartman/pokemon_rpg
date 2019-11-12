@@ -10,8 +10,12 @@ app.tablesort = {
         let sortableRows = rows.get();
 
         sortableRows.sort((a, b) => {
-            let aVal = a.children[index].innerText;
-            let bVal = b.children[index].innerText;
+            let aChild = a.children[index];
+            let bChild = b.children[index];
+            let aAttrs = aChild.attributes["data-tablesort-key"];
+            let bAttrs = bChild.attributes["data-tablesort-key"];
+            let aVal = aAttrs ? aAttrs.value : aChild.innerText;
+            let bVal = bAttrs ? bAttrs.value : bChild.innerText;
 
             if ($.isNumeric(aVal)) {
                 return direction * (aVal - bVal);

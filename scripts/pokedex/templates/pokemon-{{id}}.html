@@ -30,101 +30,106 @@
         <table>
             <tbody>
                 <tr>
-                    <th>Type</th>
+                    <th>Type:</th>
                     <td>
                         <span class="element {{type1}}">{{type1}}</span>
-                        <span class="element {{type2}}">{{type2}}</span></td>
-                    <th>HP</th>
+                        {{#type2}}
+                        <span class="element {{type2}}">{{type2}}</span>
+                        {{/type2}}
+                    </td>
+                    <th>HP:</th>
                     <td>{{hp}}</td>
                 </tr>
                 <tr>
-                    <th>Habitat</th>
+                    <th>Habitat:</th>
                     <td class="capitalize">{{habitat}}</td>
-
-                    <th>Atk</th>
-                    <td>{{atk}}</td>
+                    <th>Def:</th>
+                    <td> {{roll_def}} </td>
                 </tr>
                 <tr>
-                    <th>Gender</th>
-                    <td>{{gender_rate}}</td>
+                    <th>Capture:</th>
+                    <td>{{capture_rate}}-20</td>
+                    <th>Sp. Def:</th>
+                    <td> {{roll_sp_def}} </td>
 
-                    <th>Def</th>
-                    <td> {{def}}</td>
                 </tr>
                 <tr>
-                    <th>Capture Rate</th>
-                    <td>{{capture_rate}}</td>
-                    <th>Sp. Atk</th>
-                    <td> {{sp_atk}}</td>
+                    <th>Gender:</th>
+                    <td>{{{gender_rate_male}}}</td>
+                    <th>Spd:</th>
+                    <td> {{roll_spd}} </td>
                 </tr>
                 <tr>
                     <th></th>
-                    <td></td>
-                    <th>Sp. Def</th>
-                    <td> {{sp_def}}</td>
+                    <td>{{{gender_rate_female}}}</td>
+                    <th>Int:</th>
+                    <td>{{int}} </td>
                 </tr>
                 <tr>
-                    <th></th>
-                    <td></td>
-                    <th>Spd</th>
-                    <td> {{spd}} </td>
+                    <th>Power:</th>
+                    <td colspan="3">
+                        <progress max="113" value="{{pwr}}">{{pwr}}</progress>
+                        <span>{{pwr}} / 113</span>
+                    </td>
                 </tr>
             </tbody>
         </table>
         <canvas class="stathex" width="200" height="200"></canvas>
     </div>
-    <h2>Moves</h2>
-    <hr />
-    <label for="pokemon-filter"><i class="fas fa-filter"></i></label>
-    <input id="pokemon-filter" data-filter="input" type="text" />
-    <hr />
-    <table>
-        <thead>
-            <tr>
-                <th>method</th>
-                <th>level</th>
-                <th>move</th>
-                <th>element</th>
-                <th>power</th>
-                <th>accuracy</th>
-                <th>pp</th>
-                <th>dmg_type</th>
-                <th>target</th>
-                <th>priority</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#moves}}
-            <tr data-filter="item">
-                <td>{{method}}</td>
-                <td>{{level}}</td>
-                <td>{{move}}</td>
-                <td class="element {{element}}">{{element}}</td>
-                <td class="{{^power}}empty{{/power}}">{{power}}</td>
-                <td class="{{^accuracy}}empty{{/accuracy}}">{{accuracy}}</td>
-                <td>{{pp}}</td>
-                <td>{{dmg_type}}</td>
-                <td>{{target}}</td>
-                <td>{{priority}}</td>
-            </tr>
-            <tr>
-                <td colspan="2"></td>
-                <td colspan="8">
-                    {{description}}
-                </td>
-            </tr>
-            {{/moves}}
-        </tbody>
-    </table>
+    <div class="moves">
+        <h2>Moves</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Move</th>
+                    <th>Element</th>
+                    <th>Power</th>
+                    <th>Accuracy</th>
+                    <th>PP</th>
+                    <th>Type</th>
+                    <th>Target</th>
+                    <th>Priority</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#moves}}
+                <tr>
+                    <td>{{{method}}}{{level}}</td>
+                    <td class="capitalize">{{move}}</td>
+                    <td>
+                        <span class="element {{element}}">{{element}}</span>
+                    </td>
+                    <td>
+                        {{power}}
+                        {{^power}}-{{/power}}
+                    </td>
+                    <td>
+                        {{#accuracy}}{{accuracy}}-20{{/accuracy}}
+                        {{^accuracy}}-{{/accuracy}}
+                    </td>
+                    <td>{{pp}}</td>
+                    <td>
+                        <span class="dmg-type {{dmg_type}}">{{dmg_type}}</span>
+                    </td>
+                    <td>{{target}}</td>
+                    <td>{{priority}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="8" class="description">
+                        {{description}}
+                    </td>
+                </tr>
+                {{/moves}}
+            </tbody>
+        </table>
+    </div>
 
     <script src="assets/js/jquery-3.4.1.slim.min.js"></script>
-    <script src="assets/js/filter.js"></script>
-    <script src="assets/js/tablesort.js"></script>
     <script src="assets/js/stathex.js"></script>
     <script>
         $("document").ready(() => {
-            app.filter.setup();
-            app.tablesort.setup()
             // parseInt used so the formatting validation is not thrown off by mustache
             app.stathex.setup([{
                 "label": "HP",
@@ -133,23 +138,23 @@
             }, {
                 "label": "S. ATK",
                 "value": parseInt("{{sp_atk}}"),
-                "max": 15
+                "max": 385
             }, {
                 "label": "S. DEF",
                 "value": parseInt("{{sp_def}}"),
-                "max": 23
+                "max": 230
             }, {
                 "label": "SPD",
                 "value": parseInt("{{spd}}"),
-                "max": 16
+                "max": 160
             }, {
                 "label": "DEF",
                 "value": parseInt("{{def}}"),
-                "max": 23
+                "max": 230
             }, {
                 "label": "ATK",
                 "value": parseInt("{{atk}}"),
-                "max": 16
+                "max": 385
             }]);
         });
     </script>

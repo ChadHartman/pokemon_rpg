@@ -4,14 +4,24 @@ SELECT
     type1.identifier AS type1,
     type2.identifier AS type2,
     pokemon_species.gender_rate,
-    pokemon_species.capture_rate,
+    CAST(ROUND(((-19 * pokemon_species.capture_rate) + 5099) / 254) AS INT) AS capture_rate,
     pokemon_habitats.identifier AS habitat,
+    -- 1 -> 1; 255 -> 100
     CAST(ROUND((155 + (99 * hp_stats.base_stat)) / 254) AS INT) AS hp,
-    CAST(ROUND(atk_stats.base_stat / 10) AS INT) AS atk,
-    CAST(ROUND(def_stats.base_stat / 10) AS INT) AS def,
-    CAST(ROUND(sp_atk_stats.base_stat / 10) AS INT) AS sp_atk,
-    CAST(ROUND(sp_def_stats.base_stat / 10) AS INT) AS sp_def,
-    CAST(ROUND(spd_stats.base_stat / 10) AS INT) AS spd,
+    atk_stats.base_stat AS atk,
+    def_stats.base_stat AS def,
+    sp_atk_stats.base_stat AS sp_atk,
+    sp_def_stats.base_stat AS sp_def,
+    spd_stats.base_stat AS spd,
+    CAST(ROUND((spd_stats.base_stat + sp_atk_stats.base_stat) / 20.0) AS INT) AS 'int',
+    CAST(ROUND((
+            hp_stats.base_stat +
+            atk_stats.base_stat +
+            def_stats.base_stat +
+            sp_atk_stats.base_stat +
+            sp_def_stats.base_stat +
+            spd_stats.base_stat
+        ) / 6.0) AS INT) AS pwr,
     previous_pkmn.id AS prev_id,
     previous_pkmn.identifier AS prev_name,
     next_pkmn.id AS next_id,

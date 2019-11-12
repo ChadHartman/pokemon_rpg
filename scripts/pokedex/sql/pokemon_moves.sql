@@ -1,10 +1,19 @@
+-- SELECT * FROM move_damage_classes;
+-- id          identifier
+-- ----------  ----------
+-- 1           status
+-- 2           physical
+-- 3           special
+
 SELECT 
     moves.identifier AS 'move',
     pokemon_move_methods.identifier AS method,
     pokemon_moves.level,
-    CAST(ROUND(moves.power / 10) AS INTEGER) AS power,
+    moves.power + 
+        IFNULL(atk_stats.base_stat, 0) + 
+        IFNULL(sp_atk_stats.base_stat, 0) AS power,
     moves.pp,
-    moves.accuracy,
+    21 - CAST(ROUND(moves.accuracy / 5) AS INT) AS accuracy,
     moves.priority,
     move_targets.identifier AS 'target',
     moves.effect_chance,
@@ -27,12 +36,19 @@ FROM pokemon_moves
         ON moves.id = move_flavor_text.move_id
         AND move_flavor_text.version_group_id = 7
         AND move_flavor_text.language_id = 9
+    -- Select only if it's special
+    LEFT JOIN pokemon_stats AS atk_stats
+        ON pokemon_moves.pokemon_id = atk_stats.pokemon_id
+        AND atk_stats.stat_id = 2
+        AND move_damage_classes.id = 2
+    -- Select only if it's physical
+    LEFT JOIN pokemon_stats AS sp_atk_stats
+        ON pokemon_moves.pokemon_id = sp_atk_stats.pokemon_id
+        AND sp_atk_stats.stat_id = 4
+        AND move_damage_classes.id = 3
 -- Firered/Leafgreen
 WHERE pokemon_moves.version_group_id = 7
     AND pokemon_moves.pokemon_id = ?
 ORDER BY 
     pokemon_move_methods.identifier, 
     pokemon_moves.level
-
-
-
