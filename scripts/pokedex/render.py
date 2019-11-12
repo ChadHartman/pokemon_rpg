@@ -13,50 +13,11 @@ MAX_SPD = 160
 MIN_SPD = 5
 
 
-# def __d20_chance__(value, max_value):
-#     return 20 - int(round((19 * value / max_value)))
-
-
-# def __load_json__(path):
-#     with open(path, "r") as f:
-#         return json.load(f)
-
-
-# def __load_habitat__(conn):
-
-#     habitats = __query__(conn, "sql/habitats.sql")
-#     for habitat in habitats:
-
-#         pokemon = __query__(
-#             conn, "sql/habitat_info.sql", (habitat["id"],))
-
-#         habitat["pokemon"] = pokemon
-
-#         for mon in pokemon:
-#             mon["appear"] = __d20_chance__(mon["appear"], 255.0)
-
-#     return {"habitats": habitats}
-
-
 # def __load_items__(conn):
 
 #     items = __query__(conn, "sql/items.sql")
 
 #     return {"items": items}
-
-
-# def __load_evolutions__(conn):
-#     evolutions = __query__(conn, "sql/evolutions.sql")
-
-#     for evo in evolutions:
-
-#         if evo["needs_overworld_rain"] == 0:
-#             del evo["needs_overworld_rain"]
-
-#         if evo["turn_upside_down"] == 0:
-#             del evo["turn_upside_down"]
-
-#     return {"evolutions": evolutions}
 
 
 class Renderer(object):
@@ -71,6 +32,7 @@ class Renderer(object):
         self.gender_rate_female = None
         self.move_methods = None
         self.rolls = None
+        self.type_efficacy = None
 
     def __load_file__(self, path):
         with open(path, "r") as f:
@@ -91,6 +53,14 @@ class Renderer(object):
                 self.gender_rate_female = json.load(f)
 
         return self.gender_rate_female
+
+    def __load_type_efficacy__(self):
+
+        if self.type_efficacy is None:
+            with open("data/type_efficacy.json", "r") as f:
+                self.type_efficacy = json.load(f)
+
+        return self.type_efficacy
 
     def __load_move_methods__(self):
 
@@ -173,11 +143,57 @@ class Renderer(object):
 
         return self.pokedex
 
+    def __lookup_type_efficacy__(self, mon):
+
+        type_efficacy = self.__load_type_efficacy__()
+
+        # Load/Combine
+        modifiers = self.type_efficacy[mon["type1"]].copy()
+        if "type2" in mon:
+            modifiers2 = type_efficacy[mon["type2"]]
+
+            for key in modifiers2:
+                if key in modifiers:
+                    modifiers[key] = modifiers[key] * modifiers2[key]
+                else:
+                    modifiers[key] = modifiers2[key]
+
+        weaknesses = []
+        resistances = []
+
+        # Sort
+        for key in modifiers:
+            val = modifiers[key]
+            if val < 1:
+                if val == 0:
+                    val = "(immune)"
+                elif val == ".25":
+                    val = "+2d"
+                else:
+                    val = "+1d"
+
+                resistances.append({
+                    "name": key,
+                    "value": val
+                })
+            elif val > 1:
+                weaknesses.append({
+                    "name": key,
+                    "value": "+1d" if val == 2 else "+2d"
+                })
+
+        mon["weaknesses"] = weaknesses
+        mon["resistances"] = resistances
+
     def __load_pokemon__(self, mon):
 
         if "loaded" in mon:
             return mon
 
+        # Types
+        self.__lookup_type_efficacy__(mon)
+
+        # Rolls
         mon["roll_def"] = self.__lookup_roll__(MIN_DEF, mon["def"], MAX_DEF)
         mon["roll_sp_def"] = self.__lookup_roll__(
             MIN_DEF, mon["sp_def"], MAX_DEF)
@@ -231,11 +247,16 @@ class Renderer(object):
                 "out/pokemon-{{id}}.html"
             )
             count += 1
-            if count >= 4:
-                break
+            # if count >= 4:
+            #     break
 
 
 if __name__ == "__main__":
     renderer = Renderer()
-    # renderer.render_pokedex()
+    renderer.render_pokedex()
     renderer.render_pokemon()
+
+    with open("out/pokedex.json", "w") as f:
+        json.dump(renderer.pokedex, f, sort_keys=True)
+
+    print "Created out/pokedex.json"

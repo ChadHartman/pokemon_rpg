@@ -80,6 +80,20 @@
         </div>
         <p>{{description}}</p>
     </div>
+    <div class="resistances">
+        <h2>Resistances</h2>
+        {{#resistances}}
+        <span class="element {{name}}">{{name}}</span>
+        <span>{{value}}</span>
+        {{/resistances}}
+    </div>
+    <div class="weaknesses">
+        <h2>Weaknesses</h2>
+        {{#weaknesses}}
+        <span class="element {{name}}">{{name}}</span>
+        <span>{{value}}</span>
+        {{/weaknesses}}
+    </div>
     <div class="abilities">
         <h2>Abilities</h2>
         <table class="info-table">
@@ -225,7 +239,7 @@
             }, {
                 "label": "S. ATK",
                 "value": parseInt("{{sp_atk}}"),
-                "max": 385
+                "max": 154
             }, {
                 "label": "S. DEF",
                 "value": parseInt("{{sp_def}}"),
@@ -241,7 +255,7 @@
             }, {
                 "label": "ATK",
                 "value": parseInt("{{atk}}"),
-                "max": 385
+                "max": 160
             }]);
         });
     </script>
