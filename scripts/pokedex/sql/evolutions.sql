@@ -1,3 +1,6 @@
+.headers ON
+.mode tabs
+.output /Users/chadhartman/Desktop/evolutions.csv
 
 SELECT 
     pokemon_species.id,
@@ -5,21 +8,21 @@ SELECT
     pokemon_evolution.minimum_level,
     evolution_triggers.identifier AS trigger,
     trigger_items.identifier AS held_item,
-    pokemon_evolution.gender_id,
-    pokemon_evolution.location_id,
+    -- pokemon_evolution.gender_id,
+    -- pokemon_evolution.location_id,
     held_items.identifier AS held_item,
     pokemon_evolution.time_of_day,
     moves.identifier AS known_move,
-    move_types.identifier AS known_move_type,
+    -- move_types.identifier AS known_move_type,
     minimum_happiness,
     minimum_beauty,
-    minimum_affection,
+    -- minimum_affection,
     relative_physical_stats,
-    party_species.identifier AS party_species,
-    party_types.identifier AS party_type,
-    trade_species.identifier AS trade_species,
-    pokemon_evolution.needs_overworld_rain,
-    pokemon_evolution.turn_upside_down
+    party_species.identifier AS party_species
+    -- party_types.identifier AS party_type,
+    -- trade_species.identifier AS trade_species
+    -- pokemon_evolution.needs_overworld_rain,
+    -- pokemon_evolution.turn_upside_down
 FROM pokemon_evolution
     INNER JOIN pokemon_species
         ON pokemon_evolution.evolved_species_id = pokemon_species.id

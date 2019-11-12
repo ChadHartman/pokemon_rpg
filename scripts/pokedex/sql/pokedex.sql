@@ -25,7 +25,9 @@ SELECT
     previous_pkmn.id AS prev_id,
     previous_pkmn.identifier AS prev_name,
     next_pkmn.id AS next_id,
-    next_pkmn.identifier AS next_name
+    next_pkmn.identifier AS next_name,
+    REPLACE(pokemon_species_flavor_text.flavor_text, '
+', ' ') AS description
 FROM pokemon_species 
     INNER JOIN pokemon_habitats
         ON pokemon_species.habitat_id = pokemon_habitats.id
@@ -61,4 +63,9 @@ FROM pokemon_species
         ON (pokemon_species.id - 1) = previous_pkmn.id
     LEFT JOIN pokemon AS next_pkmn
         ON (pokemon_species.id + 1) = next_pkmn.id
+    INNER JOIN pokemon_species_flavor_text
+        ON pokemon_species.id = pokemon_species_flavor_text.species_id
+        AND pokemon_species_flavor_text.language_id = 9
+        AND pokemon_species_flavor_text.version_id = 7
 WHERE pokemon_species.generation_id <= 3
+LIMIT 1

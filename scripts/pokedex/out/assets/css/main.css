@@ -7,11 +7,11 @@ table {
     border-collapse: collapse;
 }
 
-div.stats {
+div.stat-info {
     overflow: auto;
 }
 
-div.stats>* {
+div.stat-info>* {
     float: left;
 }
 

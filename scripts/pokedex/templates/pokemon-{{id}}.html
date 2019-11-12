@@ -27,54 +27,58 @@
         {{/next_id}}
     </div>
     <div class="stats">
-        <table>
-            <tbody>
-                <tr>
-                    <th>Type:</th>
-                    <td>
-                        <span class="element {{type1}}">{{type1}}</span>
-                        {{#type2}}
-                        <span class="element {{type2}}">{{type2}}</span>
-                        {{/type2}}
-                    </td>
-                    <th>HP:</th>
-                    <td>{{hp}}</td>
-                </tr>
-                <tr>
-                    <th>Habitat:</th>
-                    <td class="capitalize">{{habitat}}</td>
-                    <th>Def:</th>
-                    <td> {{roll_def}} </td>
-                </tr>
-                <tr>
-                    <th>Capture:</th>
-                    <td>{{capture_rate}}-20</td>
-                    <th>Sp. Def:</th>
-                    <td> {{roll_sp_def}} </td>
+        <h2>Stats</h2>
+        <div class="stat-info">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Type:</th>
+                        <td>
+                            <span class="element {{type1}}">{{type1}}</span>
+                            {{#type2}}
+                            <span class="element {{type2}}">{{type2}}</span>
+                            {{/type2}}
+                        </td>
+                        <th>HP:</th>
+                        <td>{{hp}}</td>
+                    </tr>
+                    <tr>
+                        <th>Habitat:</th>
+                        <td class="capitalize">{{habitat}}</td>
+                        <th>Def:</th>
+                        <td> {{roll_def}} </td>
+                    </tr>
+                    <tr>
+                        <th>Capture:</th>
+                        <td>{{capture_rate}}-20</td>
+                        <th>Sp. Def:</th>
+                        <td> {{roll_sp_def}} </td>
 
-                </tr>
-                <tr>
-                    <th>Gender:</th>
-                    <td>{{{gender_rate_male}}}</td>
-                    <th>Spd:</th>
-                    <td> {{roll_spd}} </td>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td>{{{gender_rate_female}}}</td>
-                    <th>Int:</th>
-                    <td>{{int}} </td>
-                </tr>
-                <tr>
-                    <th>Power:</th>
-                    <td colspan="3">
-                        <progress max="113" value="{{pwr}}">{{pwr}}</progress>
-                        <span>{{pwr}} / 113</span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <canvas class="stathex" width="200" height="200"></canvas>
+                    </tr>
+                    <tr>
+                        <th>Gender:</th>
+                        <td>{{{gender_rate_male}}}</td>
+                        <th>Spd:</th>
+                        <td> {{roll_spd}} </td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>{{{gender_rate_female}}}</td>
+                        <th>Int:</th>
+                        <td>{{int}} </td>
+                    </tr>
+                    <tr>
+                        <th>Power:</th>
+                        <td colspan="3">
+                            <progress max="113" value="{{pwr}}">{{pwr}}</progress>
+                            <span>{{pwr}} / 113</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <canvas class="stathex" width="200" height="200"></canvas>
+        </div>
+        <p>{{description}}</p>
     </div>
     <div class="moves">
         <h2>Moves</h2>
