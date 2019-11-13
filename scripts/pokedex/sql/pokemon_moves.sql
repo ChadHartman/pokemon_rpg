@@ -16,7 +16,7 @@ SELECT
     21 - CAST(ROUND(moves.accuracy / 5) AS INT) AS accuracy,
     moves.priority,
     move_targets.identifier AS 'target',
-    moves.effect_chance,
+    21 - CAST(ROUND(moves.effect_chance / 5) AS INT) AS effect_chance,
     types.identifier AS element,
     move_damage_classes.identifier AS dmg_type,
     REPLACE(move_flavor_text.flavor_text, '

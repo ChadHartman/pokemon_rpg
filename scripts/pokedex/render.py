@@ -90,7 +90,8 @@ class Renderer(object):
         row_index = 0
         for row in c.fetchall():
 
-            record = {"row_index": row_index}
+            # record = {"row_index": row_index}
+            record = {}
             row_index += 1
             records.append(record)
             keys = row.keys()
@@ -128,12 +129,25 @@ class Renderer(object):
         print "Created", outfile
 
     def __lookup_roll__(self, min_value, value, max_value):
-        adj_max = max_value - min_value
-        adj_val = value - min_value
+        # - Relative based -
+        # adj_max = max_value - min_value
+        # adj_val = value - min_value
+        # rolls = self.__load_rolls__()
+        # max_index = len(rolls) - 1
+        # index = int(round(max_index * adj_val / adj_max))
+        # return rolls[index]
+
+        # - Numerical Base -
         rolls = self.__load_rolls__()
-        max_index = len(rolls) - 1
-        index = int(round(max_index * adj_val / adj_max))
-        return rolls[index]
+        # Highest values are under the rolls values
+        #   This adjustment keeps them relatively consistent
+        adj_value = value / 10.0
+
+        for roll in rolls:
+            # Returns a roll just above the max value
+            if roll["value"] > adj_value:
+                # print "Returning", roll["roll"], "value", roll["value"], "for", value, "adj", adj_value
+                return roll["roll"]
 
     def __load_pokedex__(self):
 
