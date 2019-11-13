@@ -13,13 +13,6 @@ MAX_SPD = 160
 MIN_SPD = 5
 
 
-# def __load_items__(conn):
-
-#     items = __query__(conn, "sql/items.sql")
-
-#     return {"items": items}
-
-
 class Renderer(object):
 
     DB_LOCATION = "/Users/chadhartman/Documents/external/games/pokemon/veekun-pokedex.sqlite"
@@ -261,16 +254,41 @@ class Renderer(object):
                 "out/pokemon-{{id}}.html"
             )
             count += 1
-            # if count >= 4:
-            #     break
+            if count >= 4:
+                break
+
+    def render_items(self):
+
+        categories = {}
+        with open("data/item_categories.json", "r") as f:
+            categories = json.load(f)
+
+        categorized = {
+            "machines": [],
+            "key_items": [],
+            "held_items": [],
+            "consummables": [],
+            "balls": []
+        }
+
+        for item in self.__query__("sql/items.sql"):
+            category = categories[item["category"]]
+            categorized[category].append(item)
+
+        self.__render__(
+            categorized,
+            "templates/items.html",
+            "out/items.html"
+        )
 
 
 if __name__ == "__main__":
     renderer = Renderer()
-    renderer.render_pokedex()
-    renderer.render_pokemon()
+    renderer.render_items()
+    # renderer.render_pokedex()
+    # renderer.render_pokemon()
 
-    with open("out/pokedex.json", "w") as f:
-        json.dump(renderer.pokedex, f, sort_keys=True)
+    # with open("out/pokedex.json", "w") as f:
+    #     json.dump(renderer.pokedex, f, sort_keys=True)
 
-    print "Created out/pokedex.json"
+    # print "Created out/pokedex.json"

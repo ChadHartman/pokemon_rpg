@@ -1,0 +1,21 @@
+{
+    "all-machines": "machines",
+    "dex-completion": "key_items",
+    "flutes": "key_items",
+    "evolution": "held_items",
+    "held-items": "held_items",
+    "in-a-pinch": "held_items",
+    "medicine": "held_items",
+    "species-specific": "held_items",
+    "training": "held_items",
+    "type-enhancement": "held_items",
+    "healing": "consummables",
+    "loot": "consummables",
+    "pp-recovery": "consummables",
+    "revival": "consummables",
+    "spelunking": "consummables",
+    "stat-boosts": "consummables",
+    "status-cures": "consummables",
+    "special-balls": "balls",
+    "standard-balls": "balls"
+}

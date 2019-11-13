@@ -20,6 +20,7 @@ FROM items
         ON items.id = item_prose.item_id
             AND local_language_id = 9
 WHERE items.category_id NOT IN (
-    9, 13, 14, 17, 20, 21, 22, 23, 25, 32, 36, 41, 42, 43, 44, 45, 46
+    2, 4, 6, 8, 9, 13, 14, 17, 20, 21, 22, 23, 25, 26, 32, 36, 41, 42, 43, 44, 45, 46
 )
-ORDER BY item_categories.identifier, items.identifier
+ORDER BY item_categories.identifier, items.cost
+-- items.identifier

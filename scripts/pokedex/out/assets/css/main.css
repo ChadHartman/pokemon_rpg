@@ -33,6 +33,18 @@ td, th {
     padding: 5px;
 }
 
+divz.moves table, div.abilities table, div.evolution table, table#pokedex {
+    width: 100%;
+}
+
+div.abilities th:nth-child(1), div.evolution th:nth-child(1) {
+    width: 156px;
+}
+
+div.abilities td:nth-child(2), div.evolution td:nth-child(2) {
+    text-align: left;
+}
+
 div.moves tr:nth-child(4n)>*, div.moves tr:nth-child(4n-1)>* {
     background-color: #ddd;
 }
@@ -53,6 +65,15 @@ table#pokedex button {
     border: 0px;
     background: none;
     padding: 0px 2px 0px 2px;
+}
+
+div#content {
+    max-width: 700px;
+    margin: 0px auto 0px auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 5px 10px 18px #888888;
 }
 
 /* tags */

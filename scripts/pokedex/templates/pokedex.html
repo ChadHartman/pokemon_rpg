@@ -10,59 +10,61 @@
 </head>
 
 <body>
-    <h1>Pokedex</h1>
-    <hr />
-    <label for="pokedex-filter"><i class="fas fa-filter"></i></label>
-    <input id="pokedex-filter" data-filter="input" type="text" />
-    <hr />
-    <table id="pokedex" data-tablesort="table">
-        <thead>
-            <tr>
-                <th>
-                    <span>ID</span>
-                    <button data-tablesort="desc">&#8595;</button>
-                    <button data-tablesort="asc">&#8593;</button>
-                </th>
-                <th>
-                    <span>Name</span>
-                    <button data-tablesort="desc">&#8595;</button>
-                    <button data-tablesort="asc">&#8593;</button>
-                </th>
-                <th>
-                    <span>Type(s)</span>
-                    <button data-tablesort="desc">&#8595;</button>
-                    <button data-tablesort="asc">&#8593;</button>
-                </th>
-                <th>
-                    <span>Habitat</span>
-                    <button data-tablesort="desc">&#8595;</button>
-                    <button data-tablesort="asc">&#8593;</button>
-                </th>
-                <th>
-                    <span>PWR</span>
-                    <button data-tablesort="desc">&#8595;</button>
-                    <button data-tablesort="asc">&#8593;</button>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#pokedex}}
-            <tr data-index="{{row_index}}" data-filter="item" data-tablesort="row">
-                <td>{{id}}</td>
-                <td class="capitalize"><a href="pokemon-{{id}}.html" target="_blank">{{name}}</a></td>
-                <td><span class="element {{type1}}">{{type1}}</span>
-                    {{#type2}}
-                    <span class="element {{type2}}">{{type2}}</span>
-                    {{/type2}}</td>
-                <td>{{habitat}}</td>
-                <td data-tablesort-key="{{pwr}}">
-                    <progress max="113" value="{{pwr}}">{{pwr}}</progress>
-                    {{pwr}} / 113
-                </td>
-            </tr>
-            {{/pokedex}}
-        </tbody>
-    </table>
+    <div id="content">
+        <h1>Pokedex</h1>
+        <hr />
+        <label for="pokedex-filter"><i class="fas fa-filter"></i></label>
+        <input id="pokedex-filter" data-filter="input" type="text" />
+        <hr />
+        <table id="pokedex" data-tablesort="table">
+            <thead>
+                <tr>
+                    <th>
+                        <span>ID</span>
+                        <button data-tablesort="desc">&#8595;</button>
+                        <button data-tablesort="asc">&#8593;</button>
+                    </th>
+                    <th>
+                        <span>Name</span>
+                        <button data-tablesort="desc">&#8595;</button>
+                        <button data-tablesort="asc">&#8593;</button>
+                    </th>
+                    <th>
+                        <span>Type(s)</span>
+                        <button data-tablesort="desc">&#8595;</button>
+                        <button data-tablesort="asc">&#8593;</button>
+                    </th>
+                    <th>
+                        <span>Habitat</span>
+                        <button data-tablesort="desc">&#8595;</button>
+                        <button data-tablesort="asc">&#8593;</button>
+                    </th>
+                    <th>
+                        <span>PWR</span>
+                        <button data-tablesort="desc">&#8595;</button>
+                        <button data-tablesort="asc">&#8593;</button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#pokedex}}
+                <tr data-index="{{row_index}}" data-filter="item" data-tablesort="row">
+                    <td>{{id}}</td>
+                    <td class="capitalize"><a href="pokemon-{{id}}.html" target="_blank">{{name}}</a></td>
+                    <td><span class="element {{type1}}">{{type1}}</span>
+                        {{#type2}}
+                        <span class="element {{type2}}">{{type2}}</span>
+                        {{/type2}}</td>
+                    <td>{{habitat}}</td>
+                    <td data-tablesort-key="{{pwr}}">
+                        <progress max="113" value="{{pwr}}">{{pwr}}</progress>
+                        {{pwr}} / 113
+                    </td>
+                </tr>
+                {{/pokedex}}
+            </tbody>
+        </table>
+    </div>
     <script src="assets/js/jquery-3.4.1.slim.min.js"></script>
     <script src="assets/js/filter.js"></script>
     <script src="assets/js/tablesort.js"></script>
