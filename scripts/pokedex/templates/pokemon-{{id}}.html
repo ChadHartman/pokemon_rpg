@@ -42,31 +42,36 @@
                             </td>
                             <th>HP:</th>
                             <td>{{hp}}</td>
+                            <td class="move-copy" data-copy="{{name}}	{{type1}}/{{type2}}	{{hp}}	{{roll_def}}	{{roll_sp_def}}	{{roll_spd}}">
+                                &#x1F4CB;</td>
                         </tr>
                         <tr>
                             <th>Habitat:</th>
                             <td class="capitalize">{{habitat}}</td>
                             <th>Def:</th>
                             <td> {{roll_def}} </td>
+                            <td></td>
                         </tr>
                         <tr>
                             <th>Capture:</th>
                             <td>{{capture_rate}}-20</td>
                             <th>Sp. Def:</th>
                             <td> {{roll_sp_def}} </td>
-
+                            <td></td>
                         </tr>
                         <tr>
                             <th>Gender:</th>
                             <td>{{{gender_rate_male}}}</td>
                             <th>Spd:</th>
                             <td> {{roll_spd}} </td>
+                            <td></td>
                         </tr>
                         <tr>
                             <th></th>
                             <td>{{{gender_rate_female}}}</td>
                             <th>Int:</th>
                             <td>{{int}} </td>
+                            <td></td>
                         </tr>
                         <tr>
                             <th>Power:</th>
@@ -74,6 +79,7 @@
                                 <progress max="113" value="{{pwr}}">{{pwr}}</progress>
                                 <span>{{pwr}} / 113</span>
                             </td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
@@ -227,7 +233,9 @@
                         </td>
                         <td>{{target}}</td>
                         <td>{{priority}}</td>
-                        <td class="move-copy">&#x1F4CB;</td>
+                        <td class="move-copy"
+                            data-copy="{{move}}	{{element}}	{{power}}	{{accuracy}}	{{pp}}	{{dmg_type}}	{{target}}	{{priority}}">
+                            &#x1F4CB;</td>
                     </tr>
                     <tr>
                         <td colspan="2"></td>
@@ -276,7 +284,10 @@
             }]);
 
             $(".move-copy").click(e => {
-                app.clipboard.copy(new Date().toString());
+                let copyData = e.target.attributes["data-copy"];
+                if (copyData) {
+                    app.clipboard.copy(copyData.value);
+                }
             });
         });
     </script>

@@ -8,7 +8,7 @@ app.clipboard.copy = (text) => {
         elem = $("<textarea id=\"clipboard\"></textarea>")
             .css("opacity", .01)
             .css("height", 0)
-            .css("position", "absolute")
+            .css("position", "fixed")
             .css("z-index", -1);
         $("body").append(elem);
     }
