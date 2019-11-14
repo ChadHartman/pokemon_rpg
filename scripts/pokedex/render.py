@@ -284,9 +284,9 @@ class Renderer(object):
 
 if __name__ == "__main__":
     renderer = Renderer()
-    renderer.render_items()
+    # renderer.render_items()
     # renderer.render_pokedex()
-    # renderer.render_pokemon()
+    renderer.render_pokemon()
 
     # with open("out/pokedex.json", "w") as f:
     #     json.dump(renderer.pokedex, f, sort_keys=True)

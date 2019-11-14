@@ -1,21 +1,172 @@
-## Setting the Scene
+## Alyssa Daisy
 
-* Weather
-    1. Clear Skies
-    2. Hash Sunlight
-    3. Rain
-    4. Sandstorm
-    5. Hail
-* Habitat
-    1. Cave
-    2. Forest
-    3. Grassland
-    4. Mountain
-    5. Rare
-    6. Rough-terrain
-    7. Sea
-    8. Urban
-    9. Waters-edge
+* Dr. Alyssa Daisy
+    * Aka Professor Daisy
+* Pokemon Professor who bequeths the pokedex to the heroes.
+* She lives in Nadeshiko Town.
+
+## Amaranth Fields
+
+* Locations
+    * Grass Gym
+* Residents
+* Quests
+
+## Aureolin City
+    * Pokemon League
+
+## Bole Forest
+    * Bug Gym
+
+## Camp Alabaster
+    * Ice Gym
+
+## Cardovan Town
+    * Rock Gym
+
+## Claret Crossroads
+    * Ghost Gym
+
+## Ecru Town
+    * Flying Gym
+
+## Feldgrau Point
+    * Electric Gym
+
+## Gainsboro City
+    * Psychic Gym
+
+## Gerald Hardy
+
+* One of professor Daisy's lab assistants
+* Resides in Nadeshiko Town
+
+## Glaucous Town
+    * Dragon Gym
+
+## Habitat
+
+1. Cave
+2. Forest
+3. Grassland
+4. Mountain
+5. Rare
+6. Rough-terrain
+7. Sea
+8. Urban
+9. Waters-edge
+
+
+
+## Icterine Town
+    * Ground Gym
+
+## Isabelline Town
+    * Fairy Gym
+
+## Jane Hosta
+
+* Gardener, grows flowers and berries.
+* Location: Nadeshiko Town
+* Quest Giver: HELP, MY GARDEN'S OVERRUN!
+
+## Jonquil Ruins
+    * Fire Gym
+
+## Keppel Town
+    * Poison Gym
+
+## Kobicha Town
+    * Dark Gym
+
+## Lantana, John 
+
+* Married to Nicci Lantana
+* Occupation: Miltank Farmer
+* Location: Nadeshiko Town
+* Quest Giver: SICK MILTANK?!
+
+## Lantana, Nicci
+
+* Married to John Lantana
+* Location: Nadeshiko Town
+* Occupation: Miltank Farmer
+* Quest Giver: DELCATTY IN DANGER
+
+## Locations
+
+* Amaranth Fields
+* Aureolin City
+* Bole Forest
+* Camp Alabaster
+* Cardovan Town
+* Claret Crossroads
+* Ecru Town
+* Feldgrau Point
+* Gainsboro City
+* Glaucous Town
+* Icterine Town
+* Isabelline Town
+* Jonquil Ruins
+* Keppel Town
+* Kobicha Town
+* Nadeshiko Town
+* Port Mindaro
+* Port Nyanza
+* Port Phlox
+* Zaffre Safari Zone
+
+## Nadeshiko Town
+
+* Locations
+    * Professor Daisy's Lab
+* Residents
+    * Professor Daisy
+    * Mr. Hardy
+    * Ms. Hosta
+    * Mr. and Mrs. Lantana
+* Quests
+    * HELP, MY GARDEN'S OVERRUN!
+    * DELCATTY IN DANGER
+
+## Port Mindaro
+    * Steel Gym
+
+## Port Nyanza
+    * Fighting Gym
+
+## Port Phlox
+    * Water Gym
+
+## Quest: DELCATTY IN DANGER
+
+* Location: Nadeshiko Town
+* Mrs Lantana's Delcatty ran off into the nearby forest chasing after a Nincada
+    * Shortly after Mrs Lantana heard growling and her cat screetching
+    * The cat is surrounded by Poochyena and a Mightyena
+* Reward: TM05: Roar
+
+## Quest: HELP, MY GARDEN'S OVERRUN!
+
+* Location: Nadeshiko Town
+* Quest Giver: Ms. Hosta
+* Bugs have swarmed in Ms. Hosta's garden, and the Town Mart is out of REPELs!
+    * Caterpie
+    * Weedle
+    * Wurple
+    * Metapod
+    * Kakuna
+    * Cascoon 
+    * Silcoon
+* Reward: 6 Persim Berries
+
+## Quest: SICK MILTANK?!
+
+* Location: Nadeshiko Town
+* Quest giver: Mr. Lantana
+* Description: "When the Miltank graze in this field, they keep getting poisoned, but I haven't found anything, can you take a look?"
+* Enemies: Gulpin, Oddish
+* Reward: 3 MooMoo-milk 
 
 ## Rolls
 
@@ -87,3 +238,14 @@
 * Infatuation
     * 1d20 (1-10) Cannot attack
     * Only member opposite gender
+
+## Weather
+
+1. Clear Skies
+2. Hash Sunlight
+3. Rain
+4. Sandstorm
+5. Hail
+
+## Zaffre Safari Zone
+    * Normal Gym

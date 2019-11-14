@@ -227,10 +227,11 @@
                         </td>
                         <td>{{target}}</td>
                         <td>{{priority}}</td>
+                        <td class="move-copy">&#x1F4CB;</td>
                     </tr>
                     <tr>
                         <td colspan="2"></td>
-                        <td colspan="8" class="description">
+                        <td colspan="9" class="description">
                             {{description}}
                             {{#effect_chance}}
                             ({{effect_chance}}-20)
@@ -244,8 +245,9 @@
     </div>
     <script src="assets/js/jquery-3.4.1.slim.min.js"></script>
     <script src="assets/js/stathex.js"></script>
+    <script src="assets/js/clipboard.js"></script>
     <script>
-        $("document").ready(() => {
+        $(document).ready(() => {
             // parseInt used so the formatting validation is not thrown off by mustache
             app.stathex.setup([{
                 "label": "HP",
@@ -272,6 +274,10 @@
                 "value": parseInt("{{atk}}"),
                 "max": 160
             }]);
+
+            $(".move-copy").click(e => {
+                app.clipboard.copy(new Date().toString());
+            });
         });
     </script>
 
